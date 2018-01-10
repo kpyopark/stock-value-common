@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 import org.apache.commons.collections4.list.TreeList;
+import org.apache.poi.common.usermodel.HyperlinkType;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFDataFormat;
@@ -17,6 +18,8 @@ import org.apache.poi.hssf.usermodel.HSSFHyperlink;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Hyperlink;
 
 import post.CompanyEx;
 import post.KrxSecurityType;
@@ -342,14 +345,15 @@ public class StockAnalyzer {
 		HSSFWorkbook wb = new HSSFWorkbook();
 		
 	    HSSFSheet sheet1 = wb.createSheet("data_sheet");
-	    
+		CreationHelper createHelper = wb.getCreationHelper();
+
 	    HSSFRow headerRow = sheet1.createRow((short)0);
 	    printHeader(headerRow);
 
 		for ( int cnt = 0 ; cnt < rank ; cnt++ ) {
 			//System.out.println( stockRankList.get(cnt));
 		    HSSFRow row = sheet1.createRow((short)cnt+1);
-			printData(wb,row,stockRankList.get(cnt), registeredDate);
+			printData(wb,createHelper,row,stockRankList.get(cnt), registeredDate);
 		}
 
 	    FileOutputStream fileOut = null;
@@ -431,7 +435,7 @@ public class StockAnalyzer {
 		}
 	}
 	
-	private void printData(HSSFWorkbook wb, HSSFRow row, StockRank rankInfo, String registeredDate) {
+	private void printData(HSSFWorkbook wb, CreationHelper helper, HSSFRow row, StockRank rankInfo, String registeredDate) {
 		int column = 0;
 	    HSSFCellStyle textStyle = wb.createCellStyle();
 	    HSSFCellStyle perStyle = wb.createCellStyle();
@@ -502,7 +506,7 @@ public class StockAnalyzer {
 		cell.setCellStyle(textStyle);
 		cell = row.createCell(column++);
 		cell.setCellValue("http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=" + rankInfo.getCompany().getId() + "&cID=&MenuYn=&ReportGB=&NewMenuID=&stkGb=&strResearchYN=");
-		HSSFHyperlink link = cell.getHyperlink();
+		Hyperlink link = helper.createHyperlink(HyperlinkType.URL);
 		link.setAddress("http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=" + rankInfo.getCompany().getId() + "&cID=&MenuYn=&ReportGB=&NewMenuID=&stkGb=&strResearchYN=");
 		cell.setHyperlink(link);
 	}
