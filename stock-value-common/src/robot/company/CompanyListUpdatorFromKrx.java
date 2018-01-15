@@ -426,7 +426,10 @@ public class CompanyListUpdatorFromKrx extends DataUpdator {
 	public static void main(String[] args) {
 		CompanyListUpdatorFromKrx updator = new CompanyListUpdatorFromKrx();
 		//updator.updateKrxSectorInfo();
-		updator.insertCompanyAndStockFromKrxItem(StringUtil.convertToStandardDate(new java.util.Date()));
+		String targetDate = StringUtil.convertToStandardDate(new java.util.Date());
+		if(args.length >0)
+			targetDate = args[0];
+		updator.insertCompanyAndStockFromKrxItem(targetDate);
 		// After this class runs, execute procedure 'proc_import_companies_from_extend_table' 
 	}
 	
