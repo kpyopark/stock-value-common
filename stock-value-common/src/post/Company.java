@@ -32,17 +32,17 @@ public class Company extends BaseStructure implements Comparable<Company> {
 	}
 
 	/**
-	 * id : Áõ½Ã °íÀ¯ ¹øÈ£
+	 * id : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
 	 */
 	private String id = "";
 	
 	/**
-	 * name : È¸»ç ÀÌ¸§
+	 * name : È¸ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 */
 	private String name = "";
 	
 	/**
-	 * standardDate : ±âÁØÀÏ½Ã 
+	 * standardDate : ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ 
 	 */
 	private String standardDate = null;
 	

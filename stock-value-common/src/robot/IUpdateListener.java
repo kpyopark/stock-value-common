@@ -9,7 +9,7 @@ import post.StockEstimated;
 public interface IUpdateListener {
 
 	/**
-	 * ÁÖ°¡°¡ º¯°æµÇ¾úÀ» °æ¿ì ¾Ë·ÁÁÜ. 
+	 * ï¿½Ö°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½ï¿½. 
 	 * 
 	 * @param stock
 	 * @param err
@@ -17,7 +17,7 @@ public interface IUpdateListener {
 	public void stockValueChanged(Stock stock, Throwable err);
 	
 	/**
-	 * ÁÖ°¡¿¡ ´ëÇÑ ¹Ì·¡Ãß»êÄ¡°¡ º¯°æµÇ¾úÀ» °æ¿ì ¾Ë·ÁÁÜ.
+	 * ï¿½Ö°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì·ï¿½ï¿½ß»ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½ï¿½.
 	 * 
 	 * @param cse
 	 * @param err
@@ -25,21 +25,21 @@ public interface IUpdateListener {
 	public void stockEstimationChanged(StockEstimated cse, Throwable err);
 	
 	/**
-	 * È¸»ç ÀÚÃ¼¿¡ ´ëÇÑ Á¤º¸°¡ º¯°æµÇ¾úÀ» °æ¿ì(ÀÌ¸§ÀÌ º¯°æµÇ¾ú°Å³ª, »èÁ¦, ¶Ç´Â ¼öÁ¤µÇ¾úÀ» °æ¿ì)
+	 * È¸ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½(ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Å³ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
 	 * @param company
 	 * @param err
 	 */
 	public void companyChanged(CompanyEx company, Throwable err);
 	
 	/**
-	 * È¸»çÀÇ Àç¹«ÀçÇ¥°¡ º¯°æµÇ¾úÀ» °æ¿ì ¾Ë·ÁÁÜ.
+	 * È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ç¹«ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½ï¿½.
 	 * @param cfs
 	 * @param err
 	 */
 	public void companyFinancialStatusChanged(CompanyFinancialStatus cfs, Throwable err);
 	
 	/**
-	 * È¸»çÀÇ Àç¹«ÀçÇ¥ Ãß»êÄ¡°¡ º¯°æµÇ¾úÀ» °æ¿ì ¾Ë·ÁÁÜ.
+	 * È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ç¹«ï¿½ï¿½Ç¥ ï¿½ß»ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½ï¿½.
 	 * @param cfe
 	 * @param err
 	 */

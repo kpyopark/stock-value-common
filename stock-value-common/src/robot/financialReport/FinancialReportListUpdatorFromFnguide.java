@@ -22,7 +22,7 @@ import dao.CompanyExDao;
 import dao.CompanyFinancialStatusDao;
 
 /**
- * È¸»çÀÇ Àç¹«Á¤º¸¸¦ web»ó¿¡¼­ °¡Áö°í ¿Â´Ù. (ºÐ±âÁ¤º¸¸¦ Æ÷ÇÔÇÑ´Ù.)
+ * È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ç¹«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ webï¿½ó¿¡¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½. (ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.)
  * @author Administrator
  *
  */
@@ -39,12 +39,12 @@ public class FinancialReportListUpdatorFromFnguide extends DataUpdator {
 	}
 	
 	/**
-	 * List¿¡¼­ °¡Áö°í ¿À´Â Á¤È®µµ ¶³¾îÁö´Â Á¤º¸ÀÇ ¸ðÀ½. ÀÛ³â¸»¿ùÀÚÀÇ Á¤º¸°¡ ÃÖ¼±ÀÓ.
+	 * Listï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½Û³â¸»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.
 	 */
 	ArrayList<CompanyFinancialStatus> financialStatusList = null;
 	
 	/**
-	 * List¸¦ web page¿¡¼­ °¡Áö°í ¿È.
+	 * Listï¿½ï¿½ web pageï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
 	 * @throws Exception
 	 * @deprecated
 	 */
@@ -54,7 +54,7 @@ public class FinancialReportListUpdatorFromFnguide extends DataUpdator {
 	}
 	
 	/**
-	 * À§¿¡¼­ °¡Áö°í ¿Â °³·«Á¤º¸¸¦ È°¿ëÇÏ¿© ±â¾÷ Á¤º¸ update
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ update
 	 * @deprecated
 	 */
 	public int updateCompany() throws Exception {
@@ -66,7 +66,7 @@ public class FinancialReportListUpdatorFromFnguide extends DataUpdator {
 				if ( dao.insert(financialStatusList.get(cnt).getCompany()) )
 					totCount++;
 			} else {
-				// È¸»ç¸íÀÌ ¹Ù²î¾úÀ» °æ¿ì ¹Ù²ï È¸»ç¸íÀ» ³Ö´Â´Ù.
+				// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Â´ï¿½.
 				if ( !comp.getName().equals(financialStatusList.get(cnt).getCompany().getName()) ) {
 					comp.setName(financialStatusList.get(cnt).getCompany().getName());
 					comp.setStandardDate(financialStatusList.get(cnt).getStandardDate());
@@ -79,7 +79,7 @@ public class FinancialReportListUpdatorFromFnguide extends DataUpdator {
 	}
 	
 	/**
-	 * À§¿¡¼­ °¡Áö°í ¿Â ÀÚ·á¸¦ È°¿ëÇÏ¿© ±â¾÷ Á¦¹«Á¤º¸ update
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú·á¸¦ È°ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ update
 	 * @deprecated
 	 * 
 	 * @return
@@ -103,7 +103,7 @@ public class FinancialReportListUpdatorFromFnguide extends DataUpdator {
 	}
 	
 	/**
-	 * ÇØ´ç ±â¾÷ÀÇ ¼¼ºÎ Á¤º¸(ºÐ±âº° »ó¼¼Á¤º¸)¸¦ °¡Áö°í ¿Í¼­ update
+	 * ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Ð±âº° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ update
 	 * 
 	 * @param company
 	 * @return
@@ -122,7 +122,7 @@ public class FinancialReportListUpdatorFromFnguide extends DataUpdator {
 				if ( dao.insert(stat) )
 					totCount++;
 			} else {
-				// ¼¼ºÎ ±â¾÷ Á¤º¸¿¡´Â kospi ¿©ºÎ°¡ ³ª¿ÍÀÖÁö ¾Æ´ÏÇÔ.
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ kospi ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ï¿½ï¿½.
 				stat.setKOSPI(oldStat.isKOSPI());
 				stat = updateMergedData(oldStat, stat);
 			}
@@ -132,7 +132,7 @@ public class FinancialReportListUpdatorFromFnguide extends DataUpdator {
 	}
 	
 	/**
-	 * ¿¹Àü ÀÚ·á¿Í ÃÖ½Å ÀÚ·áÁß °¡Àå ÃÖ½ÅÀÇ ÀÚ·á¸¦ ºñ±³ÇÏ¿© updateÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ï¿½ ï¿½Ö½ï¿½ ï¿½Ú·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½ï¿½ ï¿½Ú·á¸¦ ï¿½ï¿½ï¿½Ï¿ï¿½ updateï¿½Ñ´ï¿½.
 	 * 
 	 * @param oldStatus
 	 * @param newStatus
@@ -141,7 +141,7 @@ public class FinancialReportListUpdatorFromFnguide extends DataUpdator {
 	 */
 	private CompanyFinancialStatus updateMergedData(CompanyFinancialStatus oldStatus, CompanyFinancialStatus newStatus) throws Exception {
 		
-		if ( !oldStatus.getCompany().getId().equals(newStatus.getCompany().getId()) ) throw new Exception("ID°¡ ´Ù¸§["+oldStatus.getCompany().getId()+"]["+newStatus.getCompany().getId()+"]");
+		if ( !oldStatus.getCompany().getId().equals(newStatus.getCompany().getId()) ) throw new Exception("IDï¿½ï¿½ ï¿½Ù¸ï¿½["+oldStatus.getCompany().getId()+"]["+newStatus.getCompany().getId()+"]");
 		/*
 		if ( oldStatus.isFixed() && oldStatus.getOrdinarySharesSize() != 0 ) {
 			return null; 

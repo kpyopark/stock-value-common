@@ -119,15 +119,15 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * ������ ������ �����Ѵ�.
+	 * 휴장일 정보를 갱신한다.
 	 */
 	public void startClosedDayUpdator() {
 		ClosedDayRetriever.updateClosedDays();
 	}
 	
 	/**
-	 * ȸ�� ����� �����Ѵ�.
-	 * ���� �� �κ��� ������ �ణ �ʿ���.
+	 * 회사 목록을 수정한다.
+	 * 현재 이 부분은 손질이 약간 필요함.
 	 */
 	public void startCompanyListUpdator() {
 		try {
@@ -152,7 +152,7 @@ public class StockAnalyzerManager {
 	
 	
 	/**
-	 * �繫��ǥ ������ Web���� ������ �´�.
+	 * 재무재표 정보를 Web에서 가지고 온다.
 	 */
 	public void startCompanyFinancialStatusUpdator() {
 		try {
@@ -202,7 +202,7 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * ������ �߻��� �繫 ������ �����Ѵ�.
+	 * 오류가 발생한 재무 정보를 보정한다.
 	 */
 	public void startFinancialReportRefiner() {
 		try {
@@ -213,7 +213,7 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * ȸ�� �ְ������� Web���� ������ �´�.
+	 * 회사 주가정보를 Web에서 가지고 온다.
 	 */
 	public void startStockValueUpdator() {
 		try {
@@ -230,7 +230,7 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * �̷��� ȸ�� �繫��ǥ�� �߻��Ѵ�.
+	 * 미래의 회사 재무제표를 추산한다.
 	 */
 	public void startAnnualEstimationUpdator() {
 		try {
@@ -252,7 +252,7 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * �ְ� ����ġ�� �߻��Ѵ�.
+	 * 주가 예상치를 추산한다.
 	 */ 
 	public void startStockValueEstimationUpdator() {
 		try {
@@ -273,7 +273,7 @@ public class StockAnalyzerManager {
 	static SimpleDateFormat STANDARD_DATE_FORMAT = new SimpleDateFormat("yyyyMMdd");
 	
 	/**
-	 * �ְ��� ���Ѵ�.
+	 * 주가를 평가한다.
 	 */
 	public void startStockAnalyzer() {
 		try {

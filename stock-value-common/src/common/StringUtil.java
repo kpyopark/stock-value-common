@@ -136,7 +136,7 @@ public class StringUtil {
 			return 0;
 		if ( content.equals("N/A(IFRS)") )
 			return 0;
-		if ( content.equals("¿ÏÀüÀá½Ä") )
+		if ( content.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½") )
 			return -1;
 		content = content.trim();
 		try {

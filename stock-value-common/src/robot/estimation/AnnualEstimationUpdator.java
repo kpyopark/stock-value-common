@@ -15,7 +15,7 @@ import dao.CompanyExDao;
 import dao.CompanyFinancialEstimStatusDao;
 
 /**
- * CompanyListUpdator Á¤º¸¿¡¼­ ÃëÇÕÇÑ ºÐ±âÁ¤º¸¸¦ Åä´ë·Î ÀÏ³â°£ÀÇ ±âÃÊÀÚ·á¸¦ »ý¼ºÇÑ´Ù.
+ * CompanyListUpdator ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³â°£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú·á¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
  * 
  * @author Administrator
  *
@@ -29,9 +29,9 @@ public class AnnualEstimationUpdator extends DataUpdator {
 	}
 	
 	/**
-	 * ÀüÃ¼ ±â¾÷Á¤º¸ ¸ñ·ÏÀ» ±âÃÊ·Î
-	 * Ãß»êÄ¡¸¦ °è»êÇÑ´ÙÀ½
-	 * Ãß»êÄ¡ Å×ÀÌºíÀ» updateÇÑ´Ù.
+	 * ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê·ï¿½
+	 * ï¿½ß»ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½
+	 * ï¿½ß»ï¿½Ä¡ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ updateï¿½Ñ´ï¿½.
 	 * 
 	 * @throws SQLException
 	 */

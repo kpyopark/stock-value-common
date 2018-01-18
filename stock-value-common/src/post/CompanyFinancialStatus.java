@@ -7,77 +7,77 @@ public class CompanyFinancialStatus extends BaseStructure {
 	 */
 	private static final long serialVersionUID = 1397366767529694042L;
 	/**
-	 * È¸»çÁ¤º¸
+	 * È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private Company company = null;
 	/**
-	 * assets : ÀÚ»ê
+	 * assets : ï¿½Ú»ï¿½
 	 */
 	private long assets = 0;
 	/**
-	 * capital : ÀÚº»
+	 * capital : ï¿½Úºï¿½
 	 */
 	private long capital = 0;
 	/**
-	 * debt : ºÎÃ¤
+	 * debt : ï¿½ï¿½Ã¤
 	 */
 	private long debt = 0;
 	/**
-	 * devidendRatio : ¹è´çÀ² 
+	 * devidendRatio : ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	 */
 	private float dividendRatio = (float) 0.0;
 	/**
-	 * ÀÚº»ÃÑ°è
+	 * ï¿½Úºï¿½ï¿½Ñ°ï¿½
 	 */
 	private long grossCapital = 0;
 	/**
-	 * ÇöÀç Á¤º¸°¡ °íÁ¤µÈ Á¤º¸ÀÎÁö ¿©ºÎ
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	private boolean isFixed = true;
 	/**
-	 * KOSPI µîÀç¿©ºÎ
+	 * KOSPI ï¿½ï¿½ï¿½ç¿©ï¿½ï¿½
 	 */
 	private boolean isKOSPI = true;
 	/**
-	 * ÇöÀç Á¤º¸°¡ net quarterÀÎÁö ¿©ºÎ
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ net quarterï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	private boolean isQuarter = false;
 	/**
-	 * netProfit : ¼øÀÌÀÍ 
+	 * netProfit : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	 */
 	private long netProfit = 0;
 	/**
-	 * operatingProfit : ¿µ¾÷ÀÌÀÍ 
+	 * operatingProfit : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	 */
 	private long operatingProfit = 0;
 	/**
-	 * °æ»óÀÌÀÍ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private long ordinaryProfit = 0;
 	private float roa = (float) 0.0;
 	private float roe = (float) 0.0;
 	private float roi = (float) 0.0;
 	/**
-	 * saled : ÃÑ¸ÅÃâ
+	 * saled : ï¿½Ñ¸ï¿½ï¿½ï¿½
 	 */
 	private long sales = 0;
 	
 	/**
-	 * ±âÁØÀÏÀÚ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private String standardDate = null;
 	/**
-	 * º¸ÅëÁÖ ¹ßÇà ÁÖ½Ä¼ö
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö½Ä¼ï¿½
 	 */
 	private long ordinarySharesSize = 0;
 	
 	/**
-	 * ¿ì¼±ÁÖ ¹ßÇà ÁÖ½Ä¼ö
+	 * ï¿½ì¼±ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö½Ä¼ï¿½
 	 */
 	private long prefferedSharesSize = 0;
 	
 	/**
-	 * ÅõÇÏÀÚº»
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½
 	 */
 	private long investedCapital = 0;
 	

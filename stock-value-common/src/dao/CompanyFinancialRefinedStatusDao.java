@@ -185,7 +185,7 @@ public class CompanyFinancialRefinedStatusDao extends BaseDao {
 	}
 	
 	/**
-	 * ÇØ´ç Á¾¸ñ¿¡ ¸Â´Â Àç¹«Á¤º¸¸¦ °¡Áö°í ¿Â´Ù.
+	 * ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½ ï¿½ç¹«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½.
 	 * @param company
 	 * @return
 	 * @throws SQLException

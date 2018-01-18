@@ -8,42 +8,42 @@ public class CompanyIndex extends BaseStructure {
 	private static final long serialVersionUID = 5428195949612166023L;
 
 	/**
-	 * ¿µ¾÷ÀÌÀÍÀ²
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private float operatingProfitRatio = (float)0.0;
 	
 	/**
-	 * ¼øÀÍÀÍÀ²
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private float netProfitRatio = (float)0.0;
 	
 	/**
-	 * ÁÖ´ç ¼øÀÌÀÍ
+	 * ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private int eps = 0;
 	
 	/**
-	 * ÁÖ´ç Æò±ÕÀÚ»ê
+	 * ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½Ú»ï¿½
 	 */
 	private int bps = 0;
 	
 	/**
-	 * ÃÑÀÚ»ê ÀÌÀÍÀ²
+	 * ï¿½ï¿½ï¿½Ú»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private float roa = (float)0.0;
 	
 	/**
-	 * ÀÚ±âÀÚº» ÀÌÀÍÀ²
+	 * ï¿½Ú±ï¿½ï¿½Úºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private float roe = (float)0.0;
 	
 	/**
-	 * ÀÚº» ÀÌÀÍÀ²
+	 * ï¿½Úºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private float roi = (float)0.0;
 	
 	/**
-	 * ÁÖ°¡ ¼öÀÍÀ²
+	 * ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private float per = (float)0.0;
 

@@ -1,8 +1,8 @@
 package post;
 
 public enum KrxMarketType {
-	ALL("ÀüÃ¼"), KOSPI("STK"), KOSDAQ("KSQ"), KONEX("KNX");
-	private String marketType = "ÀüÃ¼";
+	ALL("ï¿½ï¿½Ã¼"), KOSPI("STK"), KOSDAQ("KSQ"), KONEX("KNX");
+	private String marketType = "ï¿½ï¿½Ã¼";
 	private KrxMarketType(String type) {
 		this.marketType = type;
 	}

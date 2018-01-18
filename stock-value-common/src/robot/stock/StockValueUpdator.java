@@ -14,7 +14,7 @@ import dao.CompanyExDao;
 import dao.StockDao;
 
 /**
- * À¥¿¡¼­ ÃÖ½Å ÁÖ°¡ Á¤º¸¸¦ °¡Áö°í ¿Â´Ù. 
+ * ì›¹ì—ì„œ ìµœì‹  ì£¼ê°€ ì •ë³´ë¥¼ ê°€ì§€ê³  ì˜¨ë‹¤. 
  * 
  * @author Administrator
  *
@@ -22,7 +22,7 @@ import dao.StockDao;
 public class StockValueUpdator extends DataUpdator {
 	
 	/**
-	 * List¿¡¼­ °¡Áö°í ¿À´Â Á¤È®µµ ¶³¾îÁö´Â Á¤º¸ÀÇ ¸ğÀ½. ÀÛ³â¸»¿ùÀÚÀÇ Á¤º¸°¡ ÃÖ¼±ÀÓ.
+	 * Listì—ì„œ ê°€ì§€ê³  ì˜¤ëŠ” ì •í™•ë„ ë–¨ì–´ì§€ëŠ” ì •ë³´ì˜ ëª¨ìŒ. ì‘ë…„ë§ì›”ìì˜ ì •ë³´ê°€ ìµœì„ ì„.
 	 */
 	
 	public StockValueUpdator() {
@@ -34,7 +34,7 @@ public class StockValueUpdator extends DataUpdator {
 	}
 	
 	/**
-	 * À¥¿¡¼­ ÁÖ½ÄÁ¤º¸¸¦ °¡Á®¿Í¼­ È°¿ë
+	 * ì›¹ì—ì„œ ì£¼ì‹ì •ë³´ë¥¼ ê°€ì ¸ì™€ì„œ í™œìš©
 	 */
 	public int updateStockInfoFromWeb(Company company) throws Exception {
 		StockDao dao = new StockDao();
@@ -52,13 +52,13 @@ public class StockValueUpdator extends DataUpdator {
 				if ( dao.insert(stock) ) 
 					totCount++;
 			} else {
-				//System.out.println("ÇØ´ç È¸»çÁ¤º¸´Â web¿¡¼­ °¡Áö°í ¿Ã ¼ö ¾ø¾ú½À´Ï´Ù.[" + company.getName() + "]");
-				err = new Throwable("WEB ¿¡¼­ ÁÖ°¡ È¹µæ ºÒ°¡");
+				//System.out.println("í•´ë‹¹ íšŒì‚¬ì •ë³´ëŠ” webì—ì„œ ê°€ì§€ê³  ì˜¬ ìˆ˜ ì—†ì—ˆìŠµë‹ˆë‹¤.[" + company.getName() + "]");
+				err = new Throwable("WEB ì—ì„œ ì£¼ê°€ íšë“ ë¶ˆê°€");
 			}
 			fireStockValueChanged(stock, err);
 		} catch ( Exception e ) {
 			e.printStackTrace();
-			System.out.println("ÇØ´ç È¸»çÁ¤º¸´Â web¿¡¼­ °¡Áö°í ¿Ã ¼ö ¾ø¾ú½À´Ï´Ù.[" + company.getName() + "]");
+			System.out.println("í•´ë‹¹ íšŒì‚¬ì •ë³´ëŠ” webì—ì„œ ê°€ì§€ê³  ì˜¬ ìˆ˜ ì—†ì—ˆìŠµë‹ˆë‹¤.[" + company.getName() + "]");
 		}
 		return totCount;
 	}

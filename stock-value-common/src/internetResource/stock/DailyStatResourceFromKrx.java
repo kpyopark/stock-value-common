@@ -35,13 +35,13 @@ public class DailyStatResourceFromKrx {
 	pageSize:300
 	market_gubun:1
 	gubun:1
-	isu_nm:»ï¼ºÀüÀÚ [005930] 
+	isu_nm:ï¿½ï¼ºï¿½ï¿½ï¿½ï¿½ [005930] 
 	isu_cd:A005930
 	mthd:
 	fr_work_dt:20140509
 	to_work_dt:20140509
 	searchBtn:
-	searchBtn2:Á¶È¸
+	searchBtn2:ï¿½ï¿½È¸
 	_:
 	*/
 	String[][] dailyStateResourceParams = {
@@ -50,13 +50,13 @@ public class DailyStatResourceFromKrx {
 		{ "cur_page", "1" },
 		{ "pageSize" , "2500" },
 		{ "gubun", "1" },
-		{ "isu_nm", "»ï¼ºÀüÀÚ [005930]" },
+		{ "isu_nm", "ï¿½ï¼ºï¿½ï¿½ï¿½ï¿½ [005930]" },
 		{ "isu_cd", "A005930" },
 		{ "mthd", "" },
 		{ "fr_work_dt", "20140509" },
 		{ "to_work_dt", "20140509" },
 		{ "searchBtn", "" },
-		{ "searchBtn2", "Á¶È¸" },
+		{ "searchBtn2", "ï¿½ï¿½È¸" },
 		{ "_", "" },
 	};
 	private DailyStatResourceFromKrx() {

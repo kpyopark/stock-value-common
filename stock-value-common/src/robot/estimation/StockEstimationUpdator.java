@@ -14,7 +14,7 @@ import dao.CompanyStockEstimationDao;
 import estimator.StockValueEstimator;
 
 /**
- * ÀúÀåµÇ¾î ÀÖ´Â ÁÖ½ÄÁ¤º¸¸¦ È°¿ëÇÏ¿© ±âÃÊ ÀÚ·á¸¦ »ý¼ºÇÑ´Ù.
+ * ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·á¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
  * 
  * @author Administrator
  *
@@ -56,7 +56,7 @@ public class StockEstimationUpdator extends DataUpdator {
 
 	/**
 	 * 
-	 * ÁÖ°¡ Ãß»êÄ¡ Á¤º¸¸¦ ¼öÁ¤ÇÑ´Ù.
+	 * ï¿½Ö°ï¿½ ï¿½ß»ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param cse
 	 * @return

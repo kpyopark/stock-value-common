@@ -116,7 +116,7 @@ public class CompanyAndItemListResource2016FromKrx {
 			String jsonStr = getStockPriceInJson(securityType, standardDate, company);
 			JSONTokener parser = new JSONTokener(jsonStr);
 			JSONObject loadedItems = new JSONObject(parser);
-			JSONArray krxItems = (JSONArray)loadedItems.get("»óÀåÁ¾¸ñ°Ë»ö");
+			JSONArray krxItems = (JSONArray)loadedItems.get("ìƒì¥ì¢…ëª©ê²€ìƒ‰");
 			for ( int pos = 0 ; pos < krxItems.length() ; pos++ ) {
 				KrxItem item = getKrxItem((JSONObject)krxItems.get(pos));
 				item.setStandardDate(standardDate);
@@ -138,7 +138,7 @@ public class CompanyAndItemListResource2016FromKrx {
 		CompanyAndItemListResource2016FromKrx webResource = new CompanyAndItemListResource2016FromKrx();
 		Company company = new Company();
 		company.setId("A005930");
-		company.setName("»ï¼ºÀüÀÚ");
+		company.setName("ì‚¼ì„±ì „ì");
 		try {
 			ArrayList<KrxItem> items = webResource.getItemList(KrxSecurityType.STOCK, "20160224", company);
 			System.out.println(items);

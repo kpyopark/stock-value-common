@@ -49,7 +49,7 @@ public class BaseDao {
 		try {
 			rtn = ds.getConnection();
 		} catch ( Exception e ) {
-			// ¸¸¾à ¿¡·¯°¡ ÀÏ¾î³ª¸é ÇÑ¹ø´õ ÇÏ°Ô ÇØÁÜ.
+			// ë§Œì•½ ì—ëŸ¬ê°€ ì¼ì–´ë‚˜ë©´ í•œë²ˆë” í•˜ê²Œ í•´ì¤Œ.
 			rtn = ds.getConnection();
 		}
 		return rtn; 

@@ -7,12 +7,12 @@ public class StockEstimated extends BaseStructure {
 	 */
 	private static final long serialVersionUID = -5537462004157319506L;
 	/**
-	 * È¸»çÁ¤º¸
+	 * È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private Company company = null;
 	
 	/**
-	 * Àç¹« »óÅÂÇ¥
+	 * ï¿½ç¹« ï¿½ï¿½ï¿½ï¿½Ç¥
 	 */
 	private CompanyFinancialStatus cfs = null;
 	
@@ -25,19 +25,19 @@ public class StockEstimated extends BaseStructure {
 	}
 
 	/**
-	 * ±âÁØÀÏÀÚ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private String standardDate = null;
 	/**
-	 * Ãß»êÄ¡ Á¤º¸ÀÇ ÃâÃ³. O = ÀÚÃ¤°è»ê,  F = fnguide , Y = Yahoo , D = datacom
+	 * ï¿½ß»ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã³. O = ï¿½ï¿½Ã¤ï¿½ï¿½ï¿½,  F = fnguide , Y = Yahoo , D = datacom
 	 */
 	private String estimKind = "O";
 	/**
-	 * Æò±Õ per
+	 * ï¿½ï¿½ï¿½ per
 	 */
 	private float avePer = (float) 0.0;
 	/**
-	 * Æò±Õ roe
+	 * ï¿½ï¿½ï¿½ roe
 	 */
 	private float aveRoe = (float) 0.0;
 	
@@ -78,23 +78,23 @@ public class StockEstimated extends BaseStructure {
 	}
 
 	/**
-	 * devidendRatio : ¹è´çÀ² 
+	 * devidendRatio : ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	 */
 	private float aveDividendRatio = (float) 0.0;
 	/**
-	 * recentEps : ÃÖ½Å eps  
+	 * recentEps : ï¿½Ö½ï¿½ eps  
 	 */
 	private float recentEps = (float) 0.0;
 	/**
-	 * ÃÖ½Å ÁÖ°¡
+	 * ï¿½Ö½ï¿½ ï¿½Ö°ï¿½
 	 */
 	private long recentStockValue = 0;
 	/**
-	 * ÃÖÁ¾ eps
+	 * ï¿½ï¿½ï¿½ï¿½ eps
 	 */
 	private float lastEps = (float) 0.0;
 	/**
-	 * Æò±Õ ÀÌÀÍÀ²
+	 * ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private float expectationRation = (float)0.0;
 	
