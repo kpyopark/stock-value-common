@@ -1,19 +1,19 @@
 package analyzer;
 
-import internetResource.companyItem.FutureResourceFromKrx;
-import internetResource.companyItem.OptionResourceFromKrx;
-import internetResource.environment.ClosedDayRetriever;
-
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.message.StringFormatterMessageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.javafx.binding.StringFormatter;
-
+import common.StringUtil;
+import dao.CompanyExDao;
+import internetResource.companyItem.FutureResourceFromKrx;
+import internetResource.companyItem.OptionResourceFromKrx;
+import internetResource.environment.ClosedDayRetriever;
 import post.Company;
 import post.CompanyEx;
 import post.KrxSecurityType;
@@ -24,8 +24,6 @@ import robot.estimation.StockEstimationUpdator;
 import robot.financialReport.FinancialReportListUpdatorFromFnguide;
 import robot.financialReport.FinancialReportRefiner;
 import robot.stock.StockValueUpdator;
-import common.StringUtil;
-import dao.CompanyExDao;
 
 class ThreadPool {
 	
@@ -121,15 +119,15 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * ÈÞÀåÀÏ Á¤º¸¸¦ °»½ÅÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 	public void startClosedDayUpdator() {
 		ClosedDayRetriever.updateClosedDays();
 	}
 	
 	/**
-	 * È¸»ç ¸ñ·ÏÀ» ¼öÁ¤ÇÑ´Ù.
-	 * ÇöÀç ÀÌ ºÎºÐÀº ¼ÕÁúÀÌ ¾à°£ ÇÊ¿äÇÔ.
+	 * È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½à°£ ï¿½Ê¿ï¿½ï¿½ï¿½.
 	 */
 	public void startCompanyListUpdator() {
 		try {
@@ -143,8 +141,8 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * Index ¸ñ·ÏÀ» ¼öÁ¤ÇÑ´Ù.
-	 * ÀÌ ºÎºÐÀº ´Ù¸¥ ÇÁ·Î±×·¥¿¡¼­ È°¿ëÇÏ±â À§ÇÏ¿© ÀÓ½Ã Ãß°¡ÇÑ ºÎºÐÀÌ´Ù.
+	 * Index ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+	 * ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ó½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½Ì´ï¿½.
 	 * 
 	 */
 	public void updateOptionListUpdator() {
@@ -154,7 +152,7 @@ public class StockAnalyzerManager {
 	
 	
 	/**
-	 * Àç¹«ÀçÇ¥ Á¤º¸¸¦ Web¿¡¼­ °¡Áö°í ¿Â´Ù.
+	 * ï¿½ç¹«ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Webï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½.
 	 */
 	public void startCompanyFinancialStatusUpdator() {
 		try {
@@ -172,13 +170,13 @@ public class StockAnalyzerManager {
 								if (orgCompany.getSecuritySector() == CompanyEx.SECURITY_ORDINARY_STOCK) {
 									updator.updateFinancialStatus(company);
 									if ( orgCompany.isClosed() != company.isClosed() ) {
-										logger.info(StringFormatter.format("[%s]-[%s]Company has closed. [%s]", company.getId(), company.getName(), company.isClosed() ? "Yes" : "No" ).getValue());
+										logger.info(String.format("[%s]-[%s]Company has closed. [%s]", company.getId(), company.getName(), company.isClosed() ? "Yes" : "No" ));
 									} else if ( orgCompany.getFicsSector() != null && !orgCompany.getFicsSector().equals(company.getFicsSector()) ) {
-										logger.info(StringFormatter.format("[%s]-[%s]Company has changed. Fics Sector before[%s]. After[%s]", company.getId(), company.getName(), orgCompany.getFicsSector(), company.getFicsSector()).getValue());
+										logger.info(String.format("[%s]-[%s]Company has changed. Fics Sector before[%s]. After[%s]", company.getId(), company.getName(), orgCompany.getFicsSector(), company.getFicsSector()));
 									} else if ( orgCompany.getFicsIndustryGroup() != null && !orgCompany.getFicsIndustryGroup().equals(company.getFicsIndustryGroup()) ) {
-										logger.info(StringFormatter.format("[%s]-[%s]Company has changed. Fics Industry Group before[%s]. After[%s]", company.getId(), company.getName(), orgCompany.getFicsIndustryGroup(), company.getFicsIndustryGroup()).getValue());
+										logger.info(String.format("[%s]-[%s]Company has changed. Fics Industry Group before[%s]. After[%s]", company.getId(), company.getName(), orgCompany.getFicsIndustryGroup(), company.getFicsIndustryGroup()));
 									} else if ( orgCompany.getFicsIndustry() != null && !orgCompany.getFicsIndustry().equals(company.getFicsIndustry()) ) {
-										logger.info(StringFormatter.format("[%s]-[%s]Company has changed. Fics Industry before[%s]. After[%s]", company.getId(), company.getName(), orgCompany.getFicsIndustry(), company.getFicsIndustry()).getValue());
+										logger.info(String.format("[%s]-[%s]Company has changed. Fics Industry before[%s]. After[%s]", company.getId(), company.getName(), orgCompany.getFicsIndustry(), company.getFicsIndustry()));
 									} else {
 										return;
 									}
@@ -204,7 +202,7 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * ¿À·ù°¡ ¹ß»ýÇÑ Àç¹« Á¤º¸¸¦ º¸Á¤ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ ï¿½ç¹« ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 	public void startFinancialReportRefiner() {
 		try {
@@ -215,7 +213,7 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * È¸»ç ÁÖ°¡Á¤º¸¸¦ Web¿¡¼­ °¡Áö°í ¿Â´Ù.
+	 * È¸ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Webï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½.
 	 */
 	public void startStockValueUpdator() {
 		try {
@@ -232,7 +230,7 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * ¹Ì·¡ÀÇ È¸»ç Àç¹«Á¦Ç¥¸¦ Ãß»êÇÑ´Ù.
+	 * ï¿½Ì·ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ç¹«ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ñ´ï¿½.
 	 */
 	public void startAnnualEstimationUpdator() {
 		try {
@@ -254,7 +252,7 @@ public class StockAnalyzerManager {
 	}
 	
 	/**
-	 * ÁÖ°¡ ¿¹»óÄ¡¸¦ Ãß»êÇÑ´Ù.
+	 * ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ñ´ï¿½.
 	 */ 
 	public void startStockValueEstimationUpdator() {
 		try {
@@ -275,7 +273,7 @@ public class StockAnalyzerManager {
 	static SimpleDateFormat STANDARD_DATE_FORMAT = new SimpleDateFormat("yyyyMMdd");
 	
 	/**
-	 * ÁÖ°¡¸¦ Æò°¡ÇÑ´Ù.
+	 * ï¿½Ö°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 	public void startStockAnalyzer() {
 		try {
