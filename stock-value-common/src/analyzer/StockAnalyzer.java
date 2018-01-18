@@ -59,10 +59,10 @@ public class StockAnalyzer {
 	}
 	
 	/**
-	 * ÃÖ½Å ÀÚ·á¸¦ Åä´ë·Î Ãß»êµÈ ÁÖ°¡¿Í, Àç¹«Á¦Ç¥ Á¤º¸¸¦ È°¿ëÇÑ StockEstimationÁ¤º¸¸¦
-	 * ¸ğµç È¸»ç¸¦ ´ë»óÀ¸·Î °¡Áö°í ¿Â´Ù.
+	 * ìµœì‹  ìë£Œë¥¼ í† ëŒ€ë¡œ ì¶”ì‚°ëœ ì£¼ê°€ì™€, ì¬ë¬´ì œí‘œ ì •ë³´ë¥¼ í™œìš©í•œ StockEstimationì •ë³´ë¥¼
+	 * ëª¨ë“  íšŒì‚¬ë¥¼ ëŒ€ìƒìœ¼ë¡œ ê°€ì§€ê³  ì˜¨ë‹¤.
 	 * 
-	 * ´Ü. ÇØ´ç È¸»çÀÇ ÁÖ°¡ Á¤º¸°¡ ºÎÁ¤È®ÇÒ °æ¿ì ´©¶ôµÈ´Ù.
+	 * ë‹¨. í•´ë‹¹ íšŒì‚¬ì˜ ì£¼ê°€ ì •ë³´ê°€ ë¶€ì •í™•í•  ê²½ìš° ëˆ„ë½ëœë‹¤.
 	 * 
 	 * @throws java.sql.SQLException
 	 */
@@ -113,13 +113,13 @@ public class StockAnalyzer {
 	
 	void printStockListToExcel(int rank, String registeredDate) {
 		File newExcel = null;
-		newExcel = new File("E:\\Document\\00.¼ø¸Å¼ö-¼ø¸Åµµ\\beststock_" + FILE_DATE_FORMAT.format(new Date()) + ".xls" );
+		newExcel = new File("E:\\Document\\00.ìˆœë§¤ìˆ˜-ìˆœë§¤ë„\\beststock_" + FILE_DATE_FORMAT.format(new Date()) + ".xls" );
 		createExcelFile(newExcel, rank, registeredDate);
 	}
 	
 	void printStockListToXML(int rank, String registeredDate) {
 		File newXML = null;
-		newXML = new File("E:\\Document\\00.¼ø¸Å¼ö-¼ø¸Åµµ\\beststock_" + FILE_DATE_FORMAT.format(new Date()) + ".xml" );
+		newXML = new File("E:\\Document\\00.ìˆœë§¤ìˆ˜-ìˆœë§¤ë„\\beststock_" + FILE_DATE_FORMAT.format(new Date()) + ".xml" );
 		createXMLFile(newXML, rank, registeredDate);
 	}
 
@@ -147,7 +147,7 @@ public class StockAnalyzer {
 	private void printStockListToExcel(int rank) {
 		File newExcel = null;
 		try {
-			newExcel = new File("C:\\Users\\user\\Documents\\00.¼ø¸Å¼ö-¼ø¸Åµµ\\beststock_" + DATE_FORMAT.format(new Date()) + ".xls" );
+			newExcel = new File("C:\\Users\\user\\Documents\\00.ìˆœë§¤ìˆ˜-ìˆœë§¤ë„\\beststock_" + DATE_FORMAT.format(new Date()) + ".xls" );
 			POIFSFileSystem fs=new POIFSFileSystem(new FileInputStream(newExcel));
 			HSSFWorkbook workbook=new HSSFWorkbook(fs);
 			HSSFSheet sheet=workbook.createSheet("Shee1");
