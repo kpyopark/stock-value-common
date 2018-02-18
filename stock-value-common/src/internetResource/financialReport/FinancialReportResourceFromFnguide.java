@@ -50,18 +50,18 @@ public class FinancialReportResourceFromFnguide {
 	static String XPATH_CONSOLIDATED_YN = "//*[@id=\"upjongRptGb\"]";
 	
 	static String[][] GENERAL_REPORT_HEADERS = { 
-		{ "�����" ,"��������", "����������", "���ڼ���", "��������", "SALES" }, // "SALES", "" }, 
-		{ "��������","��������", "OPERATION_PROFIT" },
-		//{ "��������(���)","OPERATION_PROFIT" }, // FOR ASSUARANCE INDUSTRY
-		//{ "������������(���)", "" } ,
-		{ "��������", "NET_PROFIT" },
-		//{"�������ֱͼ�(���)", "" },
-		//{"���������ֱͼ�(���)", ""},
-		{"�ڻ��Ѱ�", "ASSET_TOTAL" },
-		{"��ä�Ѱ�" ,"DEBT_TOTAL" },
-		{"�ں��Ѱ�" ,"CAPITAL_TOTAL" },
-		{"�ں���" ,"CAPITAL" },
-		{"�����ֽļ�", "GENERAL_STOCK_SIZE" }
+		{ "매출액" ,"보험료수익", "순영업수익", "이자수익", "영업수익", "SALES" }, // "SALES", "" }, 
+		{ "영업이익","영업손익", "OPERATION_PROFIT" },
+		//{ "영업손익(억원)","OPERATION_PROFIT" }, // FOR ASSUARANCE INDUSTRY
+		//{ "조정영업이익(억원)", "" } ,
+		{ "당기순이익", "NET_PROFIT" },
+		//{"지배주주귀속(억원)", "" },
+		//{"비지배주주귀속(억원)", ""},
+		{"자산총계", "ASSET_TOTAL" },
+		{"부채총계" ,"DEBT_TOTAL" },
+		{"자본총계" ,"CAPITAL_TOTAL" },
+		{"자본금" ,"CAPITAL" },
+		{"발행주식수", "GENERAL_STOCK_SIZE" }
 	};
 	
 	public boolean checkSpecialGeneralFinancialReport(Company company) throws Exception {
@@ -111,7 +111,7 @@ public class FinancialReportResourceFromFnguide {
 			while( (length = conn.getInputStream().read(buffer, 0, 4096)) != -1 ) {
 				baos.write(buffer, 0, length);
 			}
-			if ( ( baos.size() < 400 ) && ( new String( baos.toByteArray(), "euc-kr" ).indexOf("�ش� ������ ���ų� ���� ���� ������ �����ϴ�") > 0 ) ) {
+			if ( ( baos.size() < 400 ) && ( new String( baos.toByteArray(), "euc-kr" ).indexOf("해당 종목이 없거나 종목에 대한 정보가 없습니다") > 0 ) ) {
 				//company.set
 				company.setClosed(true);
 				return list;
@@ -168,39 +168,39 @@ public class FinancialReportResourceFromFnguide {
 			for(int itemCount = 0; itemCount < items.length ; itemCount++ ) {
 				TagNode[] childNodes = node(items[itemCount]).getChildTags();
 				String header = StringUtil.removeHtmlSpaceTag(node(childNodes[0]).getText().toString());
-				if ( header.equals("�����") || header.equals("��������") || header.equals("����������") || header.equals("���ڼ���") || header.equals("��������") ) {
+				if ( header.equals("매출액") || header.equals("보험료수익") || header.equals("순영업수익") || header.equals("이자수익") || header.equals("영업수익") ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setSales(StringUtil.getLongValue(node(childNodes[columns.get(position)]).getText().toString()) * 100000000);
 					}
-				} else if ( header.equals("��������") || header.equals("��������") ) {
+				} else if ( header.equals("영업이익") || header.equals("영업손익") ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setOperatingProfit(StringUtil.getLongValue(node(childNodes[columns.get(position)]).getText().toString()) * 100000000);
 					}
-				} else if ( header.equals("��������") ) {
+				} else if ( header.equals("당기순이익") ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setNetProfit(StringUtil.getLongValue(node(childNodes[columns.get(position)]).getText().toString()) * 100000000);
 					}
-				} else if ( header.equals("�ڻ��Ѱ�") ) {
+				} else if ( header.equals("자산총계") ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setAssets(StringUtil.getLongValue(node(childNodes[columns.get(position)]).getText().toString()) * 100000000);
 					}
-				} else if ( header.equals("��ä�Ѱ�") ) {
+				} else if ( header.equals("부채총계") ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setDebt(StringUtil.getLongValue(node(childNodes[columns.get(position)]).getText().toString()) * 100000000);
 					}
-				} else if ( header.equals("�ں��Ѱ�") ) {
+				} else if ( header.equals("자본총계") ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setGrossCapital(StringUtil.getLongValue(node(childNodes[columns.get(position)]).getText().toString()) * 100000000);
 					}
-				} else if ( header.equals("�ں���") ) {
+				} else if ( header.equals("자본금") ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setCapital(StringUtil.getLongValue(node(childNodes[columns.get(position)]).getText().toString()) * 100000000);
 					}
-				} else if ( header.equals("��ä����") ) {
+				} else if ( header.equals("부채비율") ) {
 					//
-				} else if ( header.equals("������") ) {
+				} else if ( header.equals("유보율") ) {
 					//
-				} else if ( header.equals("�����ֽļ�") ) {
+				} else if ( header.equals("발행주식수") ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setOrdinarySharesSize(StringUtil.getLongValue(node(childNodes[columns.get(position)]).getText().toString())* 1000);
 					}
@@ -212,7 +212,7 @@ public class FinancialReportResourceFromFnguide {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setRoe(StringUtil.getFloatValue(node(childNodes[columns.get(position)]).getText().toString())/100);
 					}
-				} else if ( header.indexOf("�����ͷ�") >= 0 ) {
+				} else if ( header.indexOf("배당수익률") >= 0 ) {
 					for(int position = 0 ; position < list.size() ; position++ ) {
 						list.get(position).setDividendRatio(StringUtil.getFloatValue(node(childNodes[columns.get(position)]).getText().toString())/100);
 					}
