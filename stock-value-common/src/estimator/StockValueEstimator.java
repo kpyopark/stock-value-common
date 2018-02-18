@@ -25,7 +25,7 @@ public class StockValueEstimator {
 	}
 	
 	/**
-	 * ȸ�� �ְ��� �̷� �߻�ġ�� ���Ѵ�.
+	 * 회사 주가의 미래 추산치를 구한다.
 	 * 
 	 * @param company
 	 * @return
@@ -42,20 +42,20 @@ public class StockValueEstimator {
 				estimation.setStandardDate(standardDate);
 			} else {
 				if ( estimStatus == null )
-					System.out.println("�ش� �߻�ġ�� �������� �ʽ��ϴ�. ["+company.getName() + ":" + company.getId() + ":" + standardDate + "]");
+					System.out.println("해당 추산치가 존재하지 않습니다. ["+company.getName() + ":" + company.getId() + ":" + standardDate + "]");
 				if ( stock == null )
-					System.out.println("�ش� �ְ������� �������� �ʽ��ϴ�. ["+company.getName() + ":" + company.getId() + ":" + standardDate + "]");
+					System.out.println("해당 주가정보가 존재하지 않습니다. ["+company.getName() + ":" + company.getId() + ":" + standardDate + "]");
 			}
 		} catch ( Exception e ) {
 			e.printStackTrace();
-			System.out.println("�ش� ������ ������ ���� ���� ������ �߻��Ͽ����ϴ�.["+company.getName() + ":" + company.getId() + ":" + standardDate + "]");
+			System.out.println("해당 정보를 가지고 오는 도중 에러가 발생하였습니다.["+company.getName() + ":" + company.getId() + ":" + standardDate + "]");
 		}
 		return estimation;
 	}
 	
 	/**
 	 * 
-	 * �繫��ǥ�� �ְ� ������ �ְ��� �̷��߻�ġ�� ���Ѵ�.
+	 * 재무제표와 주가 정보로 주가의 미래추산치를 구한다.
 	 * 
 	 * @param cfs
 	 * @param stock
@@ -82,7 +82,7 @@ public class StockValueEstimator {
 				cse.setAvePer(10000);
 				cse.setEarningYield(-100.0f);
 				cse.setAveBpr(-100.0f);
-				System.out.println("�ְ��� ��ϵǾ� ���� �ʽ��ϴ�. Ȯ�� �ʿ�.[" + stock + "]");
+				System.out.println("주가가 등록되어 있지 않습니다. 확인 필요.[" + stock + "]");
 			}
 		} else {
 			cse.setAveBps(-100);
@@ -90,14 +90,14 @@ public class StockValueEstimator {
 			cse.setAvePer(10000);
 			cse.setEarningYield((float)-100.0);
 			cse.setAveBpr(-100.0f);
-			System.out.println("�����ְ� ��ϵǾ� ���� �ʽ��ϴ�. Ȯ�� �ʿ�.[" + cfs.getCompany().getName() + ":" + cfs.getCompany().getId() + "]");
+			System.out.println("보통주가 등록되어 있지 않습니다. 확인 필요.[" + cfs.getCompany().getName() + ":" + cfs.getCompany().getId() + "]");
 		}
 		if ( cfs.getNetProfit() > 0 ) {
 			if( cfs.getGrossCapital() > 0 ) {
 				cse.setAveRoe(((float)cfs.getNetProfit())/cfs.getGrossCapital());
 			} else {
 				cse.setAveRoe(0);
-				System.out.println("���ں����� ��ϵǾ� ���� �ʽ��ϴ�.[" + cfs.getCompany().getName() + ":" + cfs.getCompany().getId() + "]");
+				System.out.println("총자본금이 등록되어 있지 않습니다.[" + cfs.getCompany().getName() + ":" + cfs.getCompany().getId() + "]");
 			}
 			cse.setLastEps((float)(cse.getRecentEps()*Math.pow(1+cse.getAveRoe(),10)));
 		} else {
