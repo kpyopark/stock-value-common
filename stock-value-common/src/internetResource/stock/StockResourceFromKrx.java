@@ -39,12 +39,12 @@ public class StockResourceFromKrx {
 	String[][] stockResourceParams = {
 		{ "se_key", "h2vlHsaQb4ibg4pgAqqvzA==" },
 		{ "isu_cd", "KR7005930003" },
-		{ "isu_nm", "�Ｚ���� [005930]" },
+		{ "isu_nm", "삼성전자 [005930]" },
 		{ "mthd" , "" },
 		{ "fr_work_dt", "20140301" },
 		{ "to_work_dt", "20140330" },
 		{ "searchBtn", "" },
-		{ "searchBtn2", "��ȸ" },
+		{ "searchBtn2", "조회" },
 		{ "_", "" },
 	};
 	
