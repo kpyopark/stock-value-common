@@ -36,12 +36,12 @@ public class FinancialStatusEstimator {
 	static String[] STANDARD_QUARTER_LIST = {FIRST_QUARTER,SECOND_QUARTER,THIRD_QUARTER,FORTH_QUARTER};
 
 	/**
-	 * 	�б� ������ ���� �ֽ��� ��(�̷�����ġ ����) 4������ ������ �´�.
-	 *  ���� ������ ���� �ֽ��� ��(�̷�����ġ ����, fixed) �� ������ �´�.
-	 *  �б⿡�� ���� �� �ִ� �Ⱓ�� ���� ���Ϳ���  ���� �� �ִ� �Ⱓ�� ���Ͽ� ������ ū���� �����Ѵ�.
+	 * 	분기 수익중 가장 최신의 것(미래예상치 제외) 4가지를 가지고 온다.
+	 *  연간 수익증 가장 최신의 것(미래예상치 제외, fixed) 을 가지고 온다.
+	 *  분기에서 구할 수 있는 기간과 연간 수익에서  구할 수 있는 기간을 비교하여 가능한 큰쪽을 선택한다.
 	 *  
-	 *  ������ �繫���� ����Ʈ�� ���� �ֽ��� �ڷ���� ���̴�.
-	 *  �̸� ���� �繫������ �߻��Ѵ�.
+	 *  구해진 재무정보 리스트는 가장 최신의 자료들인 것이다.
+	 *  이를 통해 재무정보를 추산한다.
 	 * 
 	 * @param company
 	 * @return
@@ -60,7 +60,7 @@ public class FinancialStatusEstimator {
 			if ( continuousQuarterList.size() == 0 ) {
 				rtn = annualList;
 			} else if ( annualList.size() == 0 ) {
-				// �̷� ���� �߻��ϸ� �ȵǰ�����.^^
+				// 이런 일이 발생하면 안되겠지요.^^
 				rtn = continuousQuarterList;
 			} else {
 				rtn = ( continuousQuarterList.get(0).getStandardDate().compareTo(
@@ -76,19 +76,19 @@ public class FinancialStatusEstimator {
 	public CompanyFinancialStatusEstimated getEstimatedCompanyFinancialStatus(ArrayList<CompanyFinancialStatus> cfsList, String registeredDate) {
 		CompanyFinancialStatusEstimated estimated = new CompanyFinancialStatusEstimated();
 		if ( cfsList.size() == 0 ) {
-			System.out.println("���� �繫������ ȹ������ ���߽��ϴ�. ���� ���α׷��� �ٽ� �ѹ� ���� ������.");
+			System.out.println("기초 재무정보를 획득하지 못했습니다. 위에 프로그램을 다시 한번 손좀 보세요.");
 			return null;
 		}
 		if ( cfsList.get(0).isQuarter() ) {
 			if ( cfsList.size() < 4 ) {
-				System.out.println("�б������� ��Ȯ�ϰ� ������ �ʾҽ��ϴ�. �� �Ž�� �ٷ� ���� Ȯ���ϼ���.");
+				System.out.println("분기정보가 정확하게 들어오지 않았습니다. 이 매쏘드 바로 전을 확인하세요.");
 			} else {
 				CompanyFinancialStatus first = cfsList.get(0);
 				CompanyFinancialStatus second = cfsList.get(1);
 				CompanyFinancialStatus third = cfsList.get(2);
 				CompanyFinancialStatus forth = cfsList.get(3);
 				
-				//System.out.println("--�б������� ����--[" + first.getCompany().getId() + ":" + first.getCompany().getName() +"]");
+				//System.out.println("--분기정보로 산출--[" + first.getCompany().getId() + ":" + first.getCompany().getName() +"]");
 				
 				estimated.setCompany(first.getCompany());
 				estimated.setRelatedDateList(first.getStandardDate()+","+second.getStandardDate()+"," +third.getStandardDate() + "," + forth.getStandardDate());
@@ -107,7 +107,7 @@ public class FinancialStatusEstimator {
 						( third.isFixed() ? third.getInvestedCapital() : 0 ) + ( forth.isFixed() ? forth.getInvestedCapital() : 0 )) / fixedCfsCount;
 				long estimatedNetProfit = first.getNetProfit() + second.getNetProfit() + third.getNetProfit() + forth.getNetProfit();
 				if ( first.getNetProfit() == 0 || second.getNetProfit() == 0 || third.getNetProfit() == 0 || forth.getNetProfit() == 0 ) {
-					// �б⺰ �������� ��Ȯ�ϰ� ������� �������. ��Ȯ���� ���� 0�� �׸��� �����ϰ� ������ ���� �� �ֵ��� �����Ѵ�.
+					// 분기별 순수익이 정확하게 산출되지 않은경우. 정확하지 않은 0인 항목은 제외하고 수익을 구할 수 있도록 수정한다.
 					int realValueCount = 0;
 					realValueCount += first.getNetProfit() != 0 ? 1 : 0;
 					realValueCount += second.getNetProfit() != 0 ? 1 : 0;
@@ -115,10 +115,10 @@ public class FinancialStatusEstimator {
 					realValueCount += forth.getNetProfit() != 0 ? 1 : 0;
 					estimatedNetProfit = realValueCount == 0 ? 0 : estimatedNetProfit * 4 / realValueCount; 
 				}
-				//TODO: ���������� ���� �͵��� ������ ������ �ڷḦ ���� �߻�ġ�� ���� ����ϴ� ������ �Ѵ�.
+				//TODO: 배당수익율과 같은 것들은 여러해 동안의 자료를 통한 추산치로 추후 계산하는 것으로 한다.
 				long estimatedOperatingProfit = first.getOperatingProfit() + second.getOperatingProfit() + third.getOperatingProfit() + forth.getOperatingProfit();
 				if ( first.getOperatingProfit() == 0 || second.getOperatingProfit() == 0 || third.getOperatingProfit() == 0 || forth.getOperatingProfit() == 0 ) {
-					// �б⺰ �������� ��Ȯ�ϰ� ������� �������. ��Ȯ���� ���� 0�� �׸��� �����ϰ� ������ ���� �� �ֵ��� �����Ѵ�.
+					// 분기별 순수익이 정확하게 산출되지 않은경우. 정확하지 않은 0인 항목은 제외하고 수익을 구할 수 있도록 수정한다.
 					int realValueCount = 0;
 					realValueCount += first.getOperatingProfit() != 0 ? 1 : 0;
 					realValueCount += second.getOperatingProfit() != 0 ? 1 : 0;
@@ -128,7 +128,7 @@ public class FinancialStatusEstimator {
 				}
 				long estimatedOrdinaryProfit = first.getOrdinaryProfit() + second.getOrdinaryProfit() + third.getOrdinaryProfit() + forth.getOrdinaryProfit();
 				if ( first.getOrdinaryProfit() == 0 || second.getOrdinaryProfit() == 0 || third.getOrdinaryProfit() == 0 || forth.getOrdinaryProfit() == 0 ) {
-					// �б⺰ �������� ��Ȯ�ϰ� ������� �������. ��Ȯ���� ���� 0�� �׸��� �����ϰ� ������ ���� �� �ֵ��� �����Ѵ�.
+					// 분기별 순수익이 정확하게 산출되지 않은경우. 정확하지 않은 0인 항목은 제외하고 수익을 구할 수 있도록 수정한다.
 					int realValueCount = 0;
 					realValueCount += first.getOrdinaryProfit() != 0 ? 1 : 0;
 					realValueCount += second.getOrdinaryProfit() != 0 ? 1 : 0;
@@ -136,11 +136,11 @@ public class FinancialStatusEstimator {
 					realValueCount += forth.getOrdinaryProfit() != 0 ? 1 : 0;
 					estimatedOrdinaryProfit = realValueCount == 0 ? 0 : estimatedOrdinaryProfit * 4 / realValueCount; 
 				}
-				// �ֽļ��� ���� �ֽ��� �ֽļ��� ������ �´�. modifid 2007.02.27
+				// 주식수는 가장 최신의 주식수를 가지고 온다. modifid 2007.02.27
 				long estimatedOrdinarySharesSize = getLatestOrdinarySharesSize(first.getCompany(), registeredDate);
 					//(( first.isFixed() ? first.getOrdinarySharesSize() : 0 ) + ( second.isFixed() ? second.getOrdinarySharesSize() : 0 ) +
 					//	( third.isFixed() ? third.getOrdinarySharesSize() : 0 ) + ( forth.isFixed() ? forth.getOrdinarySharesSize() : 0 )) / fixedCfsCount;
-				// �ֽļ��� ���� �ֽ��� �ֽļ��� ������ �´�. modifid 2007.02.27
+				// 주식수는 가장 최신의 주식수를 가지고 온다. modifid 2007.02.27
 				long estimatedPrefferedSharesSize = getLatestPrefferedSharesSize(first.getCompany(), registeredDate);
 					//(( first.isFixed() ? first.getPrefferedSharesSize() : 0 ) + ( second.isFixed() ? second.getPrefferedSharesSize() : 0 ) +
 					//	( third.isFixed() ? third.getPrefferedSharesSize() : 0 ) + ( forth.isFixed() ? forth.getPrefferedSharesSize() : 0 )) / fixedCfsCount;
@@ -167,13 +167,13 @@ public class FinancialStatusEstimator {
 		} else {
 			java.util.Collections.sort(cfsList,new StandardDateReverseComparator());
 			try {
-				//System.out.println("--�� ������ ����--[" + cfsList.get(0).getCompany().getId() + ":" + cfsList.get(0).getCompany().getName() +"]");
+				//System.out.println("--년 정보로 산출--[" + cfsList.get(0).getCompany().getId() + ":" + cfsList.get(0).getCompany().getName() +"]");
 				estimated.setRelatedDateList(cfsList.get(0).getStandardDate());
 				estimated.copyStructure(cfsList.get(0));
 				estimated.setOrdinarySharesSize(getLatestOrdinarySharesSize(cfsList.get(0).getCompany(), registeredDate));
 				estimated.setPrefferedSharesSize(getLatestPrefferedSharesSize(cfsList.get(0).getCompany(), registeredDate));
 			} catch ( Exception e ) {
-				System.out.println("�Ⱓ �繫������ ��Ȯ�ϰ� ���� ���߽��ϴ�. Ȯ���� �ʿ��մϴ�.[" + cfsList.get(0).getCompany().getId() + ":" + cfsList.get(0).getCompany().getName() +"]");
+				System.out.println("년간 재무정보를 정확하게 얻지 못했습니다. 확인이 필요합니다.[" + cfsList.get(0).getCompany().getId() + ":" + cfsList.get(0).getCompany().getName() +"]");
 			}
 		}
 		return estimated;
@@ -241,7 +241,7 @@ public class FinancialStatusEstimator {
 				secondMonth = Integer.parseInt(secondQuarter.substring(4,6));
 				return (firstYear - secondYear) * 12 + ( firstMonth - secondMonth ) == 3;
 			} catch ( Exception e ) {
-				// ������ ���� �б������� Ʋ�� ����.
+				// 에러가 나면 분기정보가 틀린 것임.
 			}
 		}
 		return isNextQuarter;
@@ -250,7 +250,7 @@ public class FinancialStatusEstimator {
 	
 	
 	/**
-	 * �б���������� ������ �´�.
+	 * 분기실절정보를 가지고 온다.
 	 * @param cfsList
 	 * @return
 	 */
@@ -265,7 +265,7 @@ public class FinancialStatusEstimator {
 	}
 	
 	/**
-	 * �Ⱓ���������� ������ �´�.
+	 * 년간실적정보를 가지고 온다.
 	 * @param cfsList
 	 * @return
 	 */
@@ -287,10 +287,10 @@ public class FinancialStatusEstimator {
 				if ( cfsList.get(cnt).isFixed() ) {
 					newList.add(cfsList.get(cnt));
 				} else {
-					//System.out.println("�� �ڷ�� �̷��ڷ�(�߻�ġ)�̹Ƿ� �����ؾ���.[" + cfsList.get(cnt).getCompany().getId() + ":" + cfsList.get(cnt).getCompany().getName() + ":" + cfsList.get(cnt).getStandardDate() + "]" );
+					//System.out.println("이 자료는 미래자료(추산치)이므로 제외해야함.[" + cfsList.get(cnt).getCompany().getId() + ":" + cfsList.get(cnt).getCompany().getName() + ":" + cfsList.get(cnt).getStandardDate() + "]" );
 				}
 			} else {
-				//System.out.println("�� �ڷ�� �̷��ڷ�(�߻�ġ)�̹Ƿ� �����ؾ���.[" + cfsList.get(cnt).getCompany().getId() + ":" + cfsList.get(cnt).getCompany().getName() + ":" + cfsList.get(cnt).getStandardDate() + "]" );
+				//System.out.println("이 자료는 미래자료(추산치)이므로 제외해야함.[" + cfsList.get(cnt).getCompany().getId() + ":" + cfsList.get(cnt).getCompany().getName() + ":" + cfsList.get(cnt).getStandardDate() + "]" );
 			}
 		}
 		return newList;
@@ -312,7 +312,7 @@ public class FinancialStatusEstimator {
 		Company company = new Company();
 		String currentDate = STANDARD_DATE_FORMAT.format(new Date());
 		company.setId("A031980");
-		company.setName("�ǿ�������");
+		company.setName("피에스케이");
 		System.out.println(estim.getEstimatedCompanyFinancialStatus(estim.getStandardFinancialStatusList(company, currentDate), currentDate));
 		System.out.println(FinancialStatusEstimator.getLatestOrdinarySharesSize(company, currentDate));
 	}
@@ -320,7 +320,7 @@ public class FinancialStatusEstimator {
 }
 
 /**
- * �繫���¿��� ���س�¥������ sorting�� �� ����ϴ� Comparator
+ * 재무상태에서 기준날짜순으로 sorting할 때 사용하는 Comparator
  * @author Administrator
  *
  */
